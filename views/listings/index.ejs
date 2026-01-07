@@ -1,0 +1,171 @@
+<% layout("./layouts/boilerplate") %>
+<body>
+    <style>
+        #filters{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .filter-bar{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .filter {
+            text-align: center;
+            margin-right: 2rem;
+            margin-top: 2rem;
+            opacity: .7;
+        }
+        .filter:hover{
+            opacity: 1;
+            cursor: pointer;
+        }
+        .filter p{
+            font-size: .8rem;
+        }
+        .filter a{
+            text-decoration: none;
+            color: black;
+        }
+        #filter-btn{
+            
+        }
+        .taxInfo{
+            display:none;
+        }
+        .tax-toggle{
+            border: 1px solid black ;
+            border-radius: 1rem;
+            height: 3.2rem;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            margin-left: 2rem ;
+        }
+
+        @media only screen and (width < 1400px  ){
+            .filter{
+               margin-right: 1.5rem;
+            }
+            .tax-toggle{
+                margin-left: auto;
+            }
+        }
+        @media only screen and (width < 1200px  ){
+            
+            .filter{
+               margin-right: 1rem;
+            }
+            .tax-toggle{
+                margin-left: auto;
+                padding: .6rem;
+            }
+        }
+        
+        
+    </style>
+
+    <div id="filters" >
+        <button id="filter-btn" class="btn btn-outline-dark  d-lg-none  d-md-3" 
+                type="button" 
+                data-bs-toggle="collapse" 
+                data-bs-target="#filterCollapse">
+            Filters
+        </button>
+        <div class="collapse d-lg-block" id="filterCollapse">        
+            <div class="filter-bar">
+                <div class="filter">
+                    <div><a href="/listings" style="text-decoration: none;"><i class="fa-solid fa-fire"></i></a></div>
+                    <p>Trending</p>
+                </div>
+                <div class="filter">
+                    <div ><a href="./listings?category=Rooms"><i class="fa-solid fa-bed"></i></a></div>
+                    <p>Rooms</p>
+                </div>
+                <div class="filter">
+                    <div><a href="./listings?category=Cities"><i class="fa-solid fa-mountain-city"></i></a></div>
+                    <p>Iconic Cities</p>
+                </div>
+                <div class="filter">
+                    <div><a href="./listings?category=Mountains"><i class="fa-solid fa-mountain"></i></a></div>
+                    <p>Mountains</p>
+                </div>
+                <div class="filter">
+                    <div><a href="./listings?category=Castles"><i class="fa-brands fa-fort-awesome-alt"></i></a></div>
+                    <p>Castles</p>
+                </div>
+                <div class="filter">
+                    <div><a href="./listings?category=Pools"><i class="fa-solid fa-person-swimming"></i></a></div>
+                    <p>Pools</p>
+                </div>
+                <div class="filter">
+                    <div><a href="./listings?category=Camping"><i class="fa-solid fa-campground"></i></a></div>
+                    <p>Camping</p>
+                </div>
+                <div class="filter">
+                    <div><a href="./listings?category=Farms"><i class="fa-solid fa-cow"></i></a></div>
+                    <p>Farms</p>
+                </div>
+                <div class="filter">
+                    <div><a href="./listings?category=Arctic"><i class="fa-regular fa-snowflake"></i></a></div>
+                    <p>Arctic</p>
+                </div>
+                <div class="filter">
+                    <div><a href="./listings?category=Domes"><i class="fa-solid fa-igloo"></i></a></div>
+                    <p>Domes</p>
+                </div>
+                <div class="filter">
+                    <div><a href="./listings?category=Boats"><i class="fa-solid fa-ship"></i></a></div>
+                    <p>Boats</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tax-toggle">
+            <div class="form-check-reverse form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+                <label class="form-check-label" for="switchCheckDefault">Display total after taxes</label>
+            </div>
+        </div>
+    </div>
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+        <% for (let listing of allListings){%>
+            <a href="/listings/<%=listing._id%>" class="listing-link">
+                <div class="card col listing-card" >
+                    <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_img" style="height: 20rem;">
+                    <div class="card-img-overlay"></div>
+                        <div class="card-body d-flex">
+                            <p class="card-text"><b><%=listing.title%></b>          
+                                <br>
+                                &#8377; <%=listing.price.toLocaleString("en-IN")%> / night
+                                <i class="taxInfo">&nbsp; +18%GST</i>
+                            </p>
+                            <form  role="search" action="/listings/<%= listing._id %>/book" method="get" style="z-index: 2; padding-top: .6rem;">
+                                    <button class="btn btn-outline-danger ms-auto book-btn" type="submit">Book Stay</button>
+                            </form>
+                        </div>
+                </div>
+                
+            </a>
+        <%}%>
+    </div>
+    
+</body>
+
+<script>
+    let taxSwitch = document.getElementById("switchCheckDefault");
+    taxSwitch.addEventListener("click",()=>{
+        console.log("clicked");
+        let tax = document.getElementsByClassName("taxInfo");
+        for(info of tax){
+            if(info.style.display != "inline"){
+                info.style.display = "inline";
+            }else{
+                info.style.display = "none";
+            }
+            
+        }
+        
+    });
+</script>

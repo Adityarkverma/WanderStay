@@ -1,0 +1,163 @@
+
+body{
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* important */
+}
+
+.container{
+    flex: 1 0 auto;   /* grows and pushes footer down */
+}
+/* Navbar-Styling */
+
+.navbar{
+    height: auto;
+    min-height: 5rem;
+    background-color: white;
+}
+
+.fa-compass{
+    color:#fe424d;
+    font-size:2rem;
+}
+.expolre{
+    margin-right:auto;
+}
+
+.nav-link{
+    color: #222222 !important;
+    white-space: nowrap;
+
+}
+
+/* Footer Styling */
+.f-info-links a{
+    text-decoration: none;
+    color: #222222 ;
+}
+
+.f-info-links a:hover{
+    text-decoration: underline;
+}
+
+.f-info-links,.f-info-socials,.f-info-brand{
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.f-info-socials i{
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+
+.f-info{
+    text-align: center;
+    height: 8rem;
+    background-color: #ebebeb;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-evenly;
+}
+
+/* Styling Cards */
+.listing-card{
+    border:none !important;
+    margin-bottom: 2rem;
+    
+}
+.card-img-top{
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+.card-body{
+    padding: 0 !important;
+}
+
+.card-text{
+    font-weight: 500 !important;
+    margin-right: auto;
+}
+
+.listing-link{
+    text-decoration: none;
+}
+
+.book-btn{
+    margin-right: 1rem;
+    white-space: nowrap;
+}
+/* Overlay effect for cards for hovering */
+.card-img-overlay{
+    opacity: 0;
+}
+
+.card-img-overlay:hover{
+    opacity: 0.2;
+    background-color: white;
+}
+
+/* New Page Styling */
+.add-btn{
+    background-color: #fe424d !important;
+    border: none !important;
+}
+
+/* Edit pg styling */
+.edit-btn{
+    background-color: #fe424d !important;
+    border: none !important;
+}
+
+/* Show Page */
+.show-img{
+    height:30vh;
+}
+
+.btns{
+    display: flex;
+}
+
+.show-card{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Map styling */
+#map{
+    height: 400px;
+    width: 80vh;
+}
+
+@media  only screen and (width < 800px) {
+    #map{
+        height: 400px;
+        width: 50vh;
+    }
+}
+
+@media  only screen and (width < 600px) {
+    #map{
+        height: 400px;
+       
+        width: 40vh;
+    }
+}
+@media  only screen and (width < 500px) {
+    #map{
+        height: 350px;
+        width: 250px;
+    }
+}
+
+@media  only screen and (width < 400px) {
+    #map{
+        height: 300px;
+        width: 200px;
+    }
+}
